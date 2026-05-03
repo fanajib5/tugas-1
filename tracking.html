@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tracking Pengiriman - SITTA Universitas Terbuka</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1><span class="logo-icon">📦</span> Tracking Pengiriman</h1>
+    <div class="user-info">
+      <span id="displayNama">-</span>
+      <button class="btn-logout" id="btnLogout">Logout</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <a href="dashboard.html" class="back-link">&#8592; Kembali ke Dashboard</a>
+
+    <div class="card">
+      <div class="card-title">Cari Pengiriman</div>
+      <div class="search-bar">
+        <input type="text" id="inputNoDO" placeholder="Masukkan Nomor Delivery Order (contoh: DO-001)">
+        <button class="btn btn-primary" id="btnCari">Cari</button>
+      </div>
+
+      <div id="alertContainer"></div>
+    </div>
+
+    <div class="card tracking-result" id="trackingResult">
+      <div class="card-title" id="resultTitle">Hasil Pencarian</div>
+
+      <div id="resultNama" style="font-size:1.2rem;font-weight:600;color:#1a237e;margin-bottom:1rem;"></div>
+
+      <div class="progress-container">
+        <div id="statusBadge" style="margin-bottom:0.5rem;"></div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-labels">
+          <span id="label1">Diproses</span>
+          <span id="label2">Dikirim</span>
+          <span id="label3">Sampai</span>
+        </div>
+      </div>
+
+      <div class="detail-grid" id="detailGrid"></div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/tracking.js"></script>
+</body>
+</html>

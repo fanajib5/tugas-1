@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - SITTA Universitas Terbuka</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1><span class="logo-icon">📘</span> SITTA - Universitas Terbuka</h1>
+    <div class="user-info">
+      <span id="displayNama">-</span>
+      <button class="btn-logout" id="btnLogout">Logout</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="greeting-banner" id="greetingBanner">
+      <h2 id="greetingText">Selamat ...,</h2>
+      <p id="greetingNama">Selamat datang di Sistem Informasi Tiras dan Transaksi Bahan Ajar</p>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="menu-card" onclick="window.location.href='stok.html'">
+        <div class="menu-icon">📚</div>
+        <h3>Informasi Bahan Ajar</h3>
+        <p>Lihat informasi stok dan detail bahan ajar</p>
+      </div>
+
+      <div class="menu-card" onclick="window.location.href='tracking.html'">
+        <div class="menu-icon">📦</div>
+        <h3>Tracking Pengiriman</h3>
+        <p>Lacak status pengiriman bahan ajar</p>
+      </div>
+
+      <div class="menu-card" id="menuLaporan">
+        <div class="menu-icon">📊</div>
+        <h3>Laporan</h3>
+        <p>Lihat laporan bahan ajar</p>
+        <div class="sub-menu" id="submenuLaporan">
+          <a href="#" onclick="alert('Fitur Monitoring Progress DO Bahan Ajar (dalam pengembangan)'); return false;">📋 Monitoring Progress DO Bahan Ajar</a>
+          <a href="#" onclick="alert('Fitur Rekap Bahan Ajar (dalam pengembangan)'); return false;">📑 Rekap Bahan Ajar</a>
+        </div>
+      </div>
+
+      <div class="menu-card" onclick="alert('Fitur Histori Transaksi Bahan Ajar (dalam pengembangan)');">
+        <div class="menu-icon">🕐</div>
+        <h3>Histori Transaksi Bahan Ajar</h3>
+        <p>Riwayat transaksi pemesanan bahan ajar</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

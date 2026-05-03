@@ -20,7 +20,7 @@
     <a href="dashboard.html" class="back-link">&#8592; Kembali ke Dashboard</a>
 
     <section class="card">
-      <div class="card-title">Peragaan Data Bahan Ajar</div>
+      <h2 class="card-title">Peragaan Data Bahan Ajar</h2>
       <p style="color:#666;margin-bottom:1.5rem;font-size:0.9rem;">Data stok bahan ajar yang tersedia di Universitas Terbuka</p>
 
       <div id="alertContainer"></div>
@@ -30,67 +30,6 @@
         <input type="text" id="inputCariStok" placeholder="Cari berdasarkan nama/kode barang..." class="search-input">
         <span class="stok-count" id="stokCount">Menampilkan 0 data</span>
       </div>
-
-      <!-- Form Tambah Baris -->
-      <div class="add-stok-form" id="addStokForm">
-        <div class="form-group">
-          <label for="inputKodeLokasi">Kode Lokasi</label>
-          <input type="text" id="inputKodeLokasi" placeholder="Contoh: OTMP06" required>
-          <small class="error-text" id="kodeLokasiError"></small>
-        </div>
-        <div class="form-group">
-          <label for="inputKodeBarang">Kode Barang</label>
-          <input type="text" id="inputKodeBarang" placeholder="Contoh: MKDU4112" required>
-          <small class="error-text" id="kodeBarangError"></small>
-        </div>
-        <div class="form-group">
-          <label for="inputNamaBarang">Nama Barang</label>
-          <input type="text" id="inputNamaBarang" placeholder="Nama bahan ajar" required>
-          <small class="error-text" id="namaBarangError"></small>
-        </div>
-        <div class="form-group">
-          <label for="inputJenisBarang">Jenis Barang</label>
-          <select id="inputJenisBarang">
-            <option value="BMP">BMP</option>
-            <option value="Modul">Modul</option>
-            <option value="Praktikum">Praktikum</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="inputEdisi">Edisi</label>
-          <input type="number" id="inputEdisi" placeholder="1" min="1" required>
-          <small class="error-text" id="edisiError"></small>
-        </div>
-        <div class="form-group">
-          <label for="inputStok">Stok</label>
-          <input type="number" id="inputStok" placeholder="0" min="0" required>
-          <small class="error-text" id="stokError"></small>
-        </div>
-        <div class="form-group" style="display:flex;gap:0.5rem;align-items:end;">
-          <button class="btn btn-success btn-sm" id="btnSimpanStok">Simpan</button>
-          <button class="btn btn-secondary btn-sm" id="btnBatalStok">Batal</button>
-        </div>
-      </div>
-
-      <button class="btn btn-primary btn-sm" id="btnTambahStok" style="margin-bottom:1rem;">+ Tambah Baris Stok Baru</button>
-
-      <section class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Kode Lokasi</th>
-              <th>Kode Barang</th>
-              <th>Nama Barang</th>
-              <th>Jenis Barang</th>
-              <th>Edisi</th>
-              <th>Stok</th>
-              <th>Aksi</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody"></tbody>
-        </table>
-      </section>
     </section>
   </main>
 

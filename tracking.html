@@ -20,66 +20,66 @@
     <a href="dashboard.html" class="back-link">&#8592; Kembali ke Dashboard</a>
 
     <section class="card">
-      <header class="card-title">Lacak Pengiriman</header>
-      <section class="search-bar">
+      <h2 class="card-title">Lacak Pengiriman</h2>
+      <div class="search-bar">
         <label for="inputNoDO" style="display:flex;align-items:center;font-weight:500;white-space:nowrap;">No. DO/Billing</label>
         <input type="text" id="inputNoDO" placeholder="Contoh: DO-001">
         <button class="btn btn-primary" id="btnCari">Lacak</button>
-      </section>
-      <section id="alertContainer"></section>
+      </div>
+      <div id="alertContainer"></div>
     </section>
 
     <section class="card tracking-result" id="trackingResult">
-      <header class="card-title" id="resultTitle">Hasil Pencarian</header>
+      <h2 class="card-title" id="resultTitle">Hasil Pencarian</h2>
 
-      <section class="student-info-card" id="studentInfoCard">
-        <article class="student-info-row">
+      <div class="student-info-card" id="studentInfoCard">
+        <div class="student-info-row">
           <span class="info-label">Nama Mahasiswa</span>
           <span class="info-value" id="infoNama"></span>
-        </article>
-        <article class="student-info-row">
+        </div>
+        <div class="student-info-row">
           <span class="info-label">Nomor Identitas</span>
           <span class="info-value" id="infoNik"></span>
-        </article>
-        <article class="student-info-row">
+        </div>
+        <div class="student-info-row">
           <span class="info-label">Tanggal Kirim</span>
           <span class="info-value" id="infoTgl"></span>
-        </article>
-        <article class="student-info-row">
+        </div>
+        <div class="student-info-row">
           <span class="info-label">Status</span>
           <span class="info-value" id="infoStatus"></span>
-        </article>
-        <article class="student-info-row">
+        </div>
+        <div class="student-info-row">
           <span class="info-label">Rute Pengiriman</span>
           <span class="info-value" id="infoRute"></span>
-        </article>
-      </section>
+        </div>
+      </div>
 
-      <section class="location-arrow" id="locationArrow">
+      <div class="location-arrow" id="locationArrow">
         <span class="location-from" id="locAsal"></span>
         <span class="arrow-symbol">&#8594;</span>
         <span class="location-to" id="locTujuan"></span>
-      </section>
+      </div>
 
-      <section class="progress-container">
-        <section id="statusBadge" style="margin-bottom:0.5rem;"></section>
-        <section class="progress-bar">
-          <section class="progress-fill" id="progressFill"></section>
-        </section>
-        <nav class="progress-labels">
+      <div class="progress-container">
+        <div id="statusBadge" style="margin-bottom:0.5rem;"></div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-labels">
           <span id="label1">Diproses</span>
           <span id="label2">Dikirim</span>
           <span id="label3">Sampai</span>
-        </nav>
-      </section>
+        </div>
+      </div>
 
-      <section class="timeline-container" id="timelineContainer">
-        <h3 class="section-subtitle">Riwayat Perjalanan Paket</h3>
-        <section class="timeline" id="timeline"></section>
-      </section>
+      <div class="timeline-container" id="timelineContainer">
+        <div class="section-subtitle">Riwayat Perjalanan Paket</div>
+        <div class="timeline" id="timeline"></div>
+      </div>
 
-      <section class="detail-grid" id="detailGrid"></section>
-    </section>
+      <div class="detail-grid" id="detailGrid"></div>
+    </div>
   </main>
 
   <footer class="app-footer">

@@ -26,6 +26,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		if (!noDO) {
 			showAlert("Masukkan Nomor Delivery Order terlebih dahulu", "danger");
+			inputDO.focus();
+			return;
+		}
+
+		if (noDO.length < 3) {
+			showAlert("Nomor DO minimal 3 karakter", "danger");
 			return;
 		}
 
@@ -47,28 +53,22 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function showResult(data) {
-		// Student info card
 		document.getElementById("infoNama").textContent = data.nama;
 		document.getElementById("infoNik").textContent = data.nik;
 		document.getElementById("infoTgl").textContent = data.tglKirim;
 		document.getElementById("infoStatus").textContent = data.status;
-		document.getElementById("infoRute").textContent =
-			data.asal + " -> " + data.tujuan;
+		document.getElementById("infoRute").textContent = data.asal + " -> " + data.tujuan;
 
-		// Location arrow
 		document.getElementById("locAsal").textContent = data.asal;
 		document.getElementById("locTujuan").textContent = data.tujuan;
 
-		// Status badge
 		var statusClass = "";
 		if (data.status === "Diproses") statusClass = "badge-diproses";
 		else if (data.status === "Dikirim") statusClass = "badge-dikirim";
 		else if (data.status === "Sampai") statusClass = "badge-sampai";
-
 		document.getElementById("statusBadge").innerHTML =
 			'<span class="badge ' + statusClass + '">' + data.status + "</span>";
 
-		// Progress bar
 		var progressFill = document.getElementById("progressFill");
 		progressFill.className = "progress-fill";
 		if (data.status === "Diproses") {
@@ -82,25 +82,16 @@ document.addEventListener("DOMContentLoaded", function () {
 			progressFill.classList.add("progress-sampai");
 		}
 
-		// Progress labels
 		var label1 = document.getElementById("label1");
 		var label2 = document.getElementById("label2");
 		var label3 = document.getElementById("label3");
-		if (data.status === "Diproses") {
-			label1.classList.add("active");
-			label2.classList.remove("active");
-			label3.classList.remove("active");
-		} else if (data.status === "Dikirim") {
-			label1.classList.add("active");
-			label2.classList.add("active");
-			label3.classList.remove("active");
-		} else if (data.status === "Sampai") {
-			label1.classList.add("active");
-			label2.classList.add("active");
-			label3.classList.add("active");
-		}
+		label1.classList.remove("active");
+		label2.classList.remove("active");
+		label3.classList.remove("active");
+		if (data.status === "Diproses") label1.classList.add("active");
+		else if (data.status === "Dikirim") { label1.classList.add("active"); label2.classList.add("active"); }
+		else if (data.status === "Sampai") { label1.classList.add("active"); label2.classList.add("active"); label3.classList.add("active"); }
 
-		// Timeline
 		var timeline = document.getElementById("timeline");
 		timeline.innerHTML = "";
 		for (var i = 0; i < data.timeline.length; i++) {
@@ -116,45 +107,48 @@ document.addEventListener("DOMContentLoaded", function () {
 			var content = document.createElement("div");
 			content.className = "timeline-content";
 			content.innerHTML =
-				'<div class="timeline-lokasi">' +
-				t.lokasi +
-				"</div>" +
-				'<div class="timeline-waktu">' +
-				t.waktu +
-				"</div>";
+				'<div class="timeline-lokasi">' + t.lokasi + "</div>" +
+				'<div class="timeline-waktu">' + t.waktu + "</div>";
 			node.appendChild(content);
-
 			timeline.appendChild(node);
 		}
 
-		// Detail grid
 		var detailGrid = document.getElementById("detailGrid");
 		detailGrid.innerHTML =
-			'<div class="detail-item"><div class="label">Ekspedisi</div><div class="value">' +
-			data.ekspedisi +
-			"</div></div>" +
-			'<div class="detail-item"><div class="label">Tanggal Kirim</div><div class="value">' +
-			data.tglKirim +
-			"</div></div>" +
-			'<div class="detail-item"><div class="label">Jenis Paket</div><div class="value">' +
-			data.jenisPaket +
-			"</div></div>" +
-			'<div class="detail-item"><div class="label">Total Pembayaran</div><div class="value">Rp ' +
-			formatRupiah(data.totalBayar) +
-			"</div></div>";
+			'<div class="detail-item"><div class="label">Ekspedisi</div><div class="value">' + data.ekspedisi + "</div></div>" +
+			'<div class="detail-item"><div class="label">Tanggal Kirim</div><div class="value">' + data.tglKirim + "</div></div>" +
+			'<div class="detail-item"><div class="label">Jenis Paket</div><div class="value">' + data.jenisPaket + "</div></div>" +
+			'<div class="detail-item"><div class="label">Total Pembayaran</div><div class="value">Rp ' + formatRupiah(data.totalBayar) + "</div></div>";
 
 		trackingResult.classList.add("active");
 	}
 
 	function showAlert(message, type) {
-		alertContainer.innerHTML =
-			'<div class="alert alert-' + type + '">' + message + "</div>";
-		setTimeout(function () {
-			alertContainer.innerHTML = "";
-		}, 5000);
+		alertContainer.innerHTML = '<div class="alert alert-' + type + '">' + message + "</div>";
+		setTimeout(function () { alertContainer.innerHTML = ""; }, 5000);
 	}
 
 	function formatRupiah(angka) {
 		return angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+	}
+
+	initDarkMode();
+
+	function initDarkMode() {
+		var btn = document.getElementById('btnDarkMode');
+		if (!btn) return;
+		var saved = localStorage.getItem('sitta_darkmode');
+		if (saved === 'true') {
+			document.body.classList.add('dark-mode');
+			btn.textContent = '☀️';
+			btn.title = 'Mode Terang';
+		}
+		btn.addEventListener('click', function () {
+			document.body.classList.toggle('dark-mode');
+			var isDark = document.body.classList.contains('dark-mode');
+			btn.textContent = isDark ? '☀️' : '🌙';
+			btn.title = isDark ? 'Mode Terang' : 'Mode Gelap';
+			localStorage.setItem('sitta_darkmode', isDark);
+		});
 	}
 });

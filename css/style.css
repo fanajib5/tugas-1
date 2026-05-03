@@ -118,6 +118,30 @@ header .user-info span {
 .login-card .logo-area {
   text-align: center;
   margin-bottom: 2rem;
+  background: rgba(255,255,255,0.95);
+  padding: 1.2rem;
+  border-radius: 12px;
+}
+
+.login-card .logo-area .logo-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.3rem 0;
+  letter-spacing: 0.5px;
+}
+
+.login-card .logo-area .logo-content p {
+  font-size: 0.85rem;
+  margin: 0.25rem 0;
+  opacity: 0.95;
+  line-height: 1.4;
+}
+
+.login-card .logo-area .logo-content .subtitle {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 1;
 }
 
 .login-card .logo-area .logo-icon {
@@ -138,7 +162,7 @@ header .user-info span {
 
 /* ========== FORM ========== */
 .form-group {
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.75rem;
 }
 
 .form-group label {
@@ -152,10 +176,10 @@ header .user-info span {
 .form-group input,
 .form-group select {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 1rem 1rem;
   border: 2px solid #ddd;
   border-radius: 8px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   transition: all 0.3s;
   outline: none;
   background: #fafafa;
@@ -175,10 +199,10 @@ header .user-info span {
 
 /* ========== BUTTONS ========== */
 .btn {
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 1.5rem;
   border: none;
   border-radius: 8px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s;
@@ -301,29 +325,42 @@ header .user-info span {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 2px solid #e8ecf1;
+  margin-bottom: 0;
+  padding: 1.2rem 1.5rem;
+  background: linear-gradient(135deg, #1a237e, #283593);
+  border-radius: 16px 16px 0 0;
+  border-bottom: 3px solid #3949ab;
 }
 
 .modal-header h3 {
-  font-size: 1.2rem;
-  color: #1a237e;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .modal-close {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  font-size: 1.4rem;
   cursor: pointer;
-  color: #999;
-  padding: 0.2rem;
+  color: white;
+  padding: 0.4rem 0.7rem;
   line-height: 1;
-  transition: color 0.3s;
+  border-radius: 8px;
+  transition: all 0.3s;
 }
 
 .modal-close:hover {
-  color: #333;
+  background: rgba(255,255,255,0.25);
+  border-color: rgba(255,255,255,0.5);
+}
+
+/* Modal form spacing */
+.modal-box form {
+  padding-top: 1.5rem;
 }
 
 /* ========== DASHBOARD ========== */
@@ -580,6 +617,7 @@ table tbody tr:nth-child(even):hover {
 
 .search-bar .btn {
   flex-shrink: 0;
+  width: auto;
 }
 
 /* ========== ADD STOK FORM ========== */
@@ -791,6 +829,283 @@ table tbody tr:nth-child(even):hover {
   font-weight: 600;
   color: #1a237e;
   margin-bottom: 1rem;
+}
+
+/* ========== ERROR TEXT ========== */
+.error-text {
+  display: block;
+  color: #e53935;
+  font-size: 0.78rem;
+  margin-top: 0.3rem;
+  min-height: 1rem;
+}
+
+/* ========== BTN ICON ========== */
+.btn-icon {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.btn-icon:hover {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.1);
+}
+
+/* ========== APP FOOTER ========== */
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 0.8rem;
+  color: #666;
+  font-size: 0.8rem;
+  background: rgba(255,255,255,0.9);
+  border-top: 1px solid #e8ecf1;
+  z-index: 1000;
+}
+
+/* ========== STOK TOOLBAR ========== */
+.stok-toolbar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.65rem 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.3s;
+  min-width: 200px;
+}
+
+.search-input:focus {
+  border-color: #3949ab;
+  box-shadow: 0 0 0 3px rgba(57,73,171,0.1);
+}
+
+.stok-count {
+  font-size: 0.85rem;
+  color: #888;
+  white-space: nowrap;
+}
+
+/* ========== DARK MODE ========== */
+body.dark-mode {
+  background: #1a1a2e;
+  color: #e0e0e0;
+}
+
+body.dark-mode .card,
+body.dark-mode .login-card,
+body.dark-mode .menu-card {
+  background: #16213e;
+  border-color: #0f3460;
+  color: #e0e0e0;
+}
+
+body.dark-mode .card-title {
+  color: #90caf9;
+  border-bottom-color: #0f3460;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .search-input,
+body.dark-mode .search-bar input {
+  background: #1a1a2e;
+  border-color: #0f3460;
+  color: #e0e0e0;
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group select:focus,
+body.dark-mode .search-input:focus,
+body.dark-mode .search-bar input:focus {
+  border-color: #64b5f6;
+  background: #1a1a2e;
+}
+
+body.dark-mode table tbody tr:nth-child(even) {
+  background: #1a1a3e;
+}
+
+body.dark-mode table tbody tr:hover,
+body.dark-mode table tbody tr:nth-child(even):hover {
+  background: #1a2a4e;
+}
+
+body.dark-mode table td {
+  border-bottom-color: #0f3460;
+}
+
+body.dark-mode .detail-item {
+  background: #1a1a2e;
+}
+
+body.dark-mode .detail-item .value {
+  color: #e0e0e0;
+}
+
+body.dark-mode .location-arrow {
+  background: #0f3460;
+}
+
+body.dark-mode .location-arrow .location-from,
+body.dark-mode .location-arrow .location-to {
+  color: #90caf9;
+}
+
+body.dark-mode .location-arrow .arrow-symbol {
+  color: #64b5f6;
+}
+
+body.dark-mode .add-stok-form {
+  background: #1a1a3e;
+}
+
+body.dark-mode .modal-box {
+  background: #16213e;
+  color: #e0e0e0;
+}
+
+body.dark-mode .modal-header h3 {
+  color: #90caf9;
+}
+
+body.dark-mode .modal-header {
+  border-bottom-color: #0f3460;
+}
+
+body.dark-mode .app-footer {
+  background: #16213e;
+  border-top-color: #0f3460;
+  color: #888;
+}
+
+body.dark-mode .greeting-banner {
+  background: linear-gradient(135deg, #0f3460, #1a237e);
+}
+
+body.dark-mode table thead {
+  background: linear-gradient(135deg, #0f3460, #1a237e);
+}
+
+body.dark-mode .student-info-card {
+  background: linear-gradient(135deg, #0f3460, #16213e);
+}
+
+body.dark-mode .login-page {
+  background: linear-gradient(135deg, #0d0d2b 0%, #1a1a3e 50%, #16213e 100%);
+}
+
+body.dark-mode .logo-area p {
+  color: #aaa;
+}
+
+body.dark-mode .form-group label {
+  color: #ccc;
+}
+
+body.dark-mode .btn-secondary {
+  background: #1a1a3e;
+  color: #ccc;
+}
+
+body.dark-mode .btn-secondary:hover {
+  background: #2a2a4e;
+}
+
+body.dark-mode .back-link {
+  color: #64b5f6;
+}
+
+body.dark-mode .back-link:hover {
+  color: #90caf9;
+}
+
+body.dark-mode .greeting-banner p {
+  opacity: 0.8;
+}
+
+body.dark-mode .timeline::before {
+  background: #0f3460;
+}
+
+body.dark-mode .timeline-lokasi {
+  color: #ccc;
+}
+
+body.dark-mode .timeline-waktu {
+  color: #888;
+}
+
+body.dark-mode .timeline-dot {
+  background: #0f3460;
+  border-color: #16213e;
+}
+
+body.dark-mode .menu-card h3 {
+  color: #90caf9;
+}
+
+body.dark-mode .menu-card p {
+  color: #aaa;
+}
+
+body.dark-mode .menu-card .sub-menu a {
+  color: #64b5f6;
+}
+
+body.dark-mode .menu-card .sub-menu a:hover {
+  background: #1a2a4e;
+}
+
+/* ========== ENTRANCE ANIMATIONS ========== */
+.menu-card {
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+}
+
+.menu-card:nth-child(1) { animation-delay: 0.1s; }
+.menu-card:nth-child(2) { animation-delay: 0.2s; }
+.menu-card:nth-child(3) { animation-delay: 0.3s; }
+.menu-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.badge, .progress-fill {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* ========== RESPONSIVE ========== */

@@ -7,103 +7,96 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="login-page">
-    <div class="login-card">
-      <div class="logo-area">
-        <img src="assets/logo-ut.png" alt="Logo UT" style="width:80px;height:80px;margin-bottom:0.5rem;" onerror="this.style.display='none'">
-        <h2>SITTA - UT</h2>
-        <p>Sistem Informasi Tiras dan Transaksi Bahan Ajar</p>
-        <p>Universitas Terbuka</p>
-      </div>
+  <main class="login-page">
+    <article class="login-card">
+      <header class="logo-area">
+        <div class="logo-content">
+          <h2>SITTA - UT</h2>
+          <p>Sistem Informasi Tiras dan Transaksi Bahan Ajar</p>
+          <p class="subtitle">Universitas Terbuka</p>
+        </div>
+      </header>
 
-      <div id="alertContainer"></div>
+      <section id="alertContainer"></section>
 
-      <form id="loginForm">
+      <form id="loginForm" novalidate>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" placeholder="Masukkan email" autocomplete="email">
+          <input type="email" id="email" placeholder="Masukkan email" autocomplete="email" required>
+          <small class="error-text" id="emailError"></small>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" placeholder="Masukkan password" autocomplete="current-password">
+          <input type="password" id="password" placeholder="Masukkan password" autocomplete="current-password" required>
+          <small class="error-text" id="passwordError"></small>
         </div>
         <button type="submit" class="btn btn-primary">Masuk</button>
       </form>
 
-      <div class="form-actions">
+      <nav class="form-actions">
         <button type="button" class="btn-link" id="btnLupaPassword">Lupa password?</button>
         <button type="button" class="btn-link" id="btnDaftar">Daftar</button>
-      </div>
-    </div>
-  </div>
+      </nav>
+    </article>
+  </main>
 
-      <div id="alertContainer"></div>
-
-      <form id="loginForm">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="Masukkan email" autocomplete="email">
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" placeholder="Masukkan password" autocomplete="current-password">
-        </div>
-        <button type="submit" class="btn btn-primary">Login</button>
-      </form>
-
-      <div class="form-actions">
-        <button type="button" class="btn-link" id="btnLupaPassword">Lupa Password?</button>
-        <button type="button" class="btn-link" id="btnDaftar">Daftar</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Lupa Password -->
-  <div class="modal-overlay" id="modalLupaPassword">
-    <div class="modal-box">
-      <div class="modal-header">
+  <section class="modal-overlay" id="modalLupaPassword">
+    <article class="modal-box">
+      <header class="modal-header">
         <h3>Lupa Password</h3>
         <button type="button" class="modal-close" id="closeLupaPassword">&times;</button>
-      </div>
-      <p style="color:#666;font-size:0.9rem;margin-bottom:1rem;">Masukkan email terdaftar untuk menerima link reset password.</p>
+      </header>
+      <p style="color:#666;font-size:0.9rem;margin:1.5rem 0 1.2rem 0;">Masukkan email terdaftar untuk menerima link reset password.</p>
       <form id="formLupaPassword">
         <div class="form-group">
           <label for="emailLupa">Email</label>
-          <input type="email" id="emailLupa" placeholder="Masukkan email">
+          <input type="email" id="emailLupa" placeholder="Masukkan email" required>
+          <small class="error-text" id="emailLupaError"></small>
         </div>
+        <button type="submit" class="btn btn-primary" style="margin-top:0.5rem;">Kirim Link Reset</button>
+      </form>
+    </article>
+  </section>
         <button type="submit" class="btn btn-primary">Kirim Link Reset</button>
       </form>
-    </div>
-  </div>
+    </article>
+  </section>
 
-  <!-- Modal Daftar -->
-  <div class="modal-overlay" id="modalDaftar">
-    <div class="modal-box">
-      <div class="modal-header">
+  <section class="modal-overlay" id="modalDaftar">
+    <article class="modal-box">
+      <header class="modal-header">
         <h3>Daftar Akun Baru</h3>
         <button type="button" class="modal-close" id="closeDaftar">&times;</button>
-      </div>
-      <form id="formDaftar">
+      </header>
+      <form id="formDaftar" style="padding-top: 1.5rem;">
         <div class="form-group">
           <label for="namaDaftar">Nama Lengkap</label>
-          <input type="text" id="namaDaftar" placeholder="Masukkan nama lengkap">
+          <input type="text" id="namaDaftar" placeholder="Masukkan nama lengkap" required>
+          <small class="error-text" id="namaDaftarError"></small>
         </div>
         <div class="form-group">
           <label for="emailDaftar">Email</label>
-          <input type="email" id="emailDaftar" placeholder="Masukkan email">
+          <input type="email" id="emailDaftar" placeholder="Masukkan email" required>
+          <small class="error-text" id="emailDaftarError"></small>
         </div>
         <div class="form-group">
           <label for="passwordDaftar">Password</label>
-          <input type="password" id="passwordDaftar" placeholder="Buat password">
+          <input type="password" id="passwordDaftar" placeholder="Buat password (min. 6 karakter)" required>
+          <small class="error-text" id="passwordDaftarError"></small>
         </div>
         <div class="form-group">
           <label for="passwordDaftarConfirm">Konfirmasi Password</label>
-          <input type="password" id="passwordDaftarConfirm" placeholder="Konfirmasi password">
+          <input type="password" id="passwordDaftarConfirm" placeholder="Konfirmasi password" required>
+          <small class="error-text" id="passwordDaftarConfirmError"></small>
         </div>
-        <button type="submit" class="btn btn-primary">Daftar</button>
+        <button type="submit" class="btn btn-primary" style="margin-top:0.5rem;">Daftar</button>
       </form>
-    </div>
-  </div>
+    </article>
+  </section>
+
+  <footer class="app-footer">
+    &copy; 2026 SITTA - Universitas Terbuka
+  </footer>
 
   <script src="js/data.js"></script>
   <script src="js/login.js"></script>

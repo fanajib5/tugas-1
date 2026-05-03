@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // ===== ELEMENTS =====
   const loginForm = document.getElementById('loginForm');
   const emailInput = document.getElementById('email');
   const passwordInput = document.getElementById('password');
+  const emailError = document.getElementById('emailError');
+  const passwordError = document.getElementById('passwordError');
   const alertContainer = document.getElementById('alertContainer');
 
   const modalLupa = document.getElementById('modalLupaPassword');
@@ -14,33 +15,38 @@ document.addEventListener('DOMContentLoaded', function () {
   const formLupa = document.getElementById('formLupaPassword');
   const formDaftar = document.getElementById('formDaftar');
 
-  // ===== VALIDASI & LOGIN =====
+  function clearErrors() {
+    emailInput.classList.remove('error');
+    passwordInput.classList.remove('error');
+    emailError.textContent = '';
+    passwordError.textContent = '';
+  }
+
+  function setError(input, errorEl, message) {
+    input.classList.add('error');
+    errorEl.textContent = message;
+  }
+
   loginForm.addEventListener('submit', function (e) {
     e.preventDefault();
+    clearErrors();
+    alertContainer.innerHTML = '';
 
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
-    emailInput.classList.remove('error');
-    passwordInput.classList.remove('error');
-
     if (!email) {
-      showAlert('Email tidak boleh kosong', 'danger');
-      emailInput.classList.add('error');
+      setError(emailInput, emailError, 'Email tidak boleh kosong');
       emailInput.focus();
       return;
     }
-
     if (!isValidEmail(email)) {
-      showAlert('Format email tidak valid', 'danger');
-      emailInput.classList.add('error');
+      setError(emailInput, emailError, 'Format email tidak valid');
       emailInput.focus();
       return;
     }
-
     if (!password) {
-      showAlert('Password tidak boleh kosong', 'danger');
-      passwordInput.classList.add('error');
+      setError(passwordInput, passwordError, 'Password tidak boleh kosong');
       passwordInput.focus();
       return;
     }
@@ -54,20 +60,22 @@ document.addEventListener('DOMContentLoaded', function () {
       window.location.href = 'dashboard.html';
     } else {
       showAlert('Email/password yang anda masukkan salah', 'danger');
-      emailInput.classList.add('error');
-      passwordInput.classList.add('error');
+      setError(emailInput, emailError, 'Email atau password salah');
+      setError(passwordInput, passwordError, 'Email atau password salah');
     }
   });
 
-  // ===== MODAL LUPA PASSWORD =====
-  btnLupa.addEventListener('click', function () {
-    modalLupa.classList.add('active');
+  emailInput.addEventListener('input', function () {
+    emailInput.classList.remove('error');
+    emailError.textContent = '';
+  });
+  passwordInput.addEventListener('input', function () {
+    passwordInput.classList.remove('error');
+    passwordError.textContent = '';
   });
 
-  closeLupa.addEventListener('click', function () {
-    modalLupa.classList.remove('active');
-  });
-
+  btnLupa.addEventListener('click', function () { modalLupa.classList.add('active'); });
+  closeLupa.addEventListener('click', function () { modalLupa.classList.remove('active'); });
   modalLupa.addEventListener('click', function (e) {
     if (e.target === modalLupa) modalLupa.classList.remove('active');
   });
@@ -75,31 +83,25 @@ document.addEventListener('DOMContentLoaded', function () {
   formLupa.addEventListener('submit', function (e) {
     e.preventDefault();
     const email = document.getElementById('emailLupa').value.trim();
+    const errEl = document.getElementById('emailLupaError');
+    errEl.textContent = '';
 
     if (!email) {
-      alert('Masukkan email terlebih dahulu');
+      errEl.textContent = 'Masukkan email terlebih dahulu';
       return;
     }
-
     if (!isValidEmail(email)) {
-      alert('Format email tidak valid');
+      errEl.textContent = 'Format email tidak valid';
       return;
     }
 
-    alert('Link reset password telah dikirim ke email anda');
-    modalLupa.classList.remove('active');
+    showModalAlert(modalLupa, 'Link reset password telah dikirim ke email anda', 'success');
     document.getElementById('emailLupa').value = '';
+    setTimeout(function () { modalLupa.classList.remove('active'); }, 1500);
   });
 
-  // ===== MODAL DAFTAR =====
-  btnDaftar.addEventListener('click', function () {
-    modalDaftar.classList.add('active');
-  });
-
-  closeDaftar.addEventListener('click', function () {
-    modalDaftar.classList.remove('active');
-  });
-
+  btnDaftar.addEventListener('click', function () { modalDaftar.classList.add('active'); });
+  closeDaftar.addEventListener('click', function () { modalDaftar.classList.remove('active'); });
   modalDaftar.addEventListener('click', function (e) {
     if (e.target === modalDaftar) modalDaftar.classList.remove('active');
   });
@@ -112,50 +114,57 @@ document.addEventListener('DOMContentLoaded', function () {
     const password = document.getElementById('passwordDaftar').value;
     const confirm = document.getElementById('passwordDaftarConfirm').value;
 
+    document.getElementById('namaDaftarError').textContent = '';
+    document.getElementById('emailDaftarError').textContent = '';
+    document.getElementById('passwordDaftarError').textContent = '';
+    document.getElementById('passwordDaftarConfirmError').textContent = '';
+
     if (!nama) {
-      alert('Nama lengkap tidak boleh kosong');
+      document.getElementById('namaDaftarError').textContent = 'Nama lengkap tidak boleh kosong';
       return;
     }
-
     if (!email) {
-      alert('Email tidak boleh kosong');
+      document.getElementById('emailDaftarError').textContent = 'Email tidak boleh kosong';
       return;
     }
-
     if (!isValidEmail(email)) {
-      alert('Format email tidak valid');
+      document.getElementById('emailDaftarError').textContent = 'Format email tidak valid';
       return;
     }
-
     if (!password) {
-      alert('Password tidak boleh kosong');
+      document.getElementById('passwordDaftarError').textContent = 'Password tidak boleh kosong';
       return;
     }
-
     if (password.length < 6) {
-      alert('Password minimal 6 karakter');
+      document.getElementById('passwordDaftarError').textContent = 'Password minimal 6 karakter';
       return;
     }
-
     if (password !== confirm) {
-      alert('Konfirmasi password tidak cocok');
+      document.getElementById('passwordDaftarConfirmError').textContent = 'Konfirmasi password tidak cocok';
       return;
     }
 
-    alert('Pendaftaran berhasil! Silahkan login dengan akun baru anda');
-    modalDaftar.classList.remove('active');
+    showModalAlert(modalDaftar, 'Pendaftaran berhasil! Silahkan login', 'success');
     document.getElementById('namaDaftar').value = '';
     document.getElementById('emailDaftar').value = '';
     document.getElementById('passwordDaftar').value = '';
     document.getElementById('passwordDaftarConfirm').value = '';
+    setTimeout(function () { modalDaftar.classList.remove('active'); }, 1500);
   });
 
-  // ===== HELPER =====
   function showAlert(message, type) {
     alertContainer.innerHTML = '<div class="alert alert-' + type + '">' + message + '</div>';
-    setTimeout(function () {
-      alertContainer.innerHTML = '';
-    }, 4000);
+    setTimeout(function () { alertContainer.innerHTML = ''; }, 4000);
+  }
+
+  function showModalAlert(modal, message, type) {
+    var box = modal.querySelector('.modal-box');
+    var existing = box.querySelector('.alert');
+    if (existing) existing.remove();
+    var alert = document.createElement('div');
+    alert.className = 'alert alert-' + type;
+    alert.textContent = message;
+    box.insertBefore(alert, box.querySelector('form'));
   }
 
   function isValidEmail(email) {

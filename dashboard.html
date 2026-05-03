@@ -6,51 +6,56 @@
   <title>Dashboard - SITTA Universitas Terbuka</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="dark-mode-ready">
   <header>
     <h1><span class="logo-icon">📘</span> SITTA - Universitas Terbuka</h1>
-    <div class="user-info">
+    <nav class="user-info">
       <span id="displayNama">-</span>
+      <button class="btn-icon" id="btnDarkMode" title="Mode Gelap">🌙</button>
       <button class="btn-logout" id="btnLogout">Logout</button>
-    </div>
+    </nav>
   </header>
 
-  <div class="container">
-    <div class="greeting-banner" id="greetingBanner">
+  <main class="container">
+    <section class="greeting-banner" id="greetingBanner">
       <h2 id="greetingText">Selamat ...,</h2>
       <p id="greetingNama">Selamat datang di Sistem Informasi Tiras dan Transaksi Bahan Ajar</p>
-    </div>
+    </section>
 
-    <div class="dashboard-grid">
-      <div class="menu-card" onclick="window.location.href='stok.html'">
+    <section class="dashboard-grid" id="menuGrid">
+      <article class="menu-card" onclick="window.location.href='stok.html'" tabindex="0" role="button" aria-label="Informasi Bahan Ajar">
         <div class="menu-icon">📚</div>
         <h3>Informasi Bahan Ajar</h3>
         <p>Lihat informasi stok dan detail bahan ajar</p>
-      </div>
+      </article>
 
-      <div class="menu-card" onclick="window.location.href='tracking.html'">
+      <article class="menu-card" onclick="window.location.href='tracking.html'" tabindex="0" role="button" aria-label="Tracking Pengiriman">
         <div class="menu-icon">📦</div>
         <h3>Tracking Pengiriman</h3>
         <p>Lacak status pengiriman bahan ajar</p>
-      </div>
+      </article>
 
-      <div class="menu-card" id="menuLaporan">
+      <article class="menu-card" id="menuLaporan" tabindex="0" role="button" aria-label="Laporan">
         <div class="menu-icon">📊</div>
         <h3>Laporan</h3>
         <p>Lihat laporan bahan ajar</p>
-        <div class="sub-menu" id="submenuLaporan">
+        <nav class="sub-menu" id="submenuLaporan">
           <a href="#" onclick="alert('Fitur Monitoring Progress DO Bahan Ajar (dalam pengembangan)'); return false;">📋 Monitoring Progress DO Bahan Ajar</a>
           <a href="#" onclick="alert('Fitur Rekap Bahan Ajar (dalam pengembangan)'); return false;">📑 Rekap Bahan Ajar</a>
-        </div>
-      </div>
+        </nav>
+      </article>
 
-      <div class="menu-card" onclick="alert('Fitur Histori Transaksi Bahan Ajar (dalam pengembangan)');">
+      <article class="menu-card" onclick="alert('Fitur Histori Transaksi Bahan Ajar (dalam pengembangan)');" tabindex="0" role="button" aria-label="Histori Transaksi">
         <div class="menu-icon">🕐</div>
         <h3>Histori Transaksi Bahan Ajar</h3>
         <p>Riwayat transaksi pemesanan bahan ajar</p>
-      </div>
-    </div>
-  </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>&copy; 2026 SITTA - Universitas Terbuka</p>
+  </footer>
 
   <script src="js/dashboard.js"></script>
 </body>

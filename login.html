@@ -10,11 +10,32 @@
   <div class="login-page">
     <div class="login-card">
       <div class="logo-area">
-        <div class="logo-icon">�</div>
+        <img src="assets/logo-ut.png" alt="Logo UT" style="width:80px;height:80px;margin-bottom:0.5rem;" onerror="this.style.display='none'">
         <h2>SITTA - UT</h2>
         <p>Sistem Informasi Tiras dan Transaksi Bahan Ajar</p>
         <p>Universitas Terbuka</p>
       </div>
+
+      <div id="alertContainer"></div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Masukkan email" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Masukkan password" autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-primary">Masuk</button>
+      </form>
+
+      <div class="form-actions">
+        <button type="button" class="btn-link" id="btnLupaPassword">Lupa password?</button>
+        <button type="button" class="btn-link" id="btnDaftar">Daftar</button>
+      </div>
+    </div>
+  </div>
 
       <div id="alertContainer"></div>
 

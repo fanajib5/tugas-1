@@ -19,20 +19,52 @@
     <a href="dashboard.html" class="back-link">&#8592; Kembali ke Dashboard</a>
 
     <div class="card">
-      <div class="card-title">Cari Pengiriman</div>
+      <div class="card-title">Lacak Pengiriman</div>
       <div class="search-bar">
-        <input type="text" id="inputNoDO" placeholder="Masukkan Nomor Delivery Order (contoh: DO-001)">
-        <button class="btn btn-primary" id="btnCari">Cari</button>
+        <label for="inputNoDO" style="display:flex;align-items:center;font-weight:500;white-space:nowrap;">No. DO/Billing</label>
+        <input type="text" id="inputNoDO" placeholder="Contoh: DO-001">
+        <button class="btn btn-primary" id="btnCari">Lacak</button>
       </div>
-
       <div id="alertContainer"></div>
     </div>
 
     <div class="card tracking-result" id="trackingResult">
       <div class="card-title" id="resultTitle">Hasil Pencarian</div>
 
-      <div id="resultNama" style="font-size:1.2rem;font-weight:600;color:#1a237e;margin-bottom:1rem;"></div>
+      <div id="resultNama"></div>
 
+      <!-- Info Mahasiswa Card -->
+      <div class="student-info-card" id="studentInfoCard">
+        <div class="student-info-row">
+          <span class="info-label">Nama Mahasiswa</span>
+          <span class="info-value" id="infoNama"></span>
+        </div>
+        <div class="student-info-row">
+          <span class="info-label">Nomor Identitas</span>
+          <span class="info-value" id="infoNik"></span>
+        </div>
+        <div class="student-info-row">
+          <span class="info-label">Tanggal Kirim</span>
+          <span class="info-value" id="infoTgl"></span>
+        </div>
+        <div class="student-info-row">
+          <span class="info-label">Status</span>
+          <span class="info-value" id="infoStatus"></span>
+        </div>
+        <div class="student-info-row">
+          <span class="info-label">Rute Pengiriman</span>
+          <span class="info-value" id="infoRute"></span>
+        </div>
+      </div>
+
+      <!-- Lokasi Arrow -->
+      <div class="location-arrow" id="locationArrow">
+        <span class="location-from" id="locAsal"></span>
+        <span class="arrow-symbol">&#8594;</span>
+        <span class="location-to" id="locTujuan"></span>
+      </div>
+
+      <!-- Progress Bar -->
       <div class="progress-container">
         <div id="statusBadge" style="margin-bottom:0.5rem;"></div>
         <div class="progress-bar">
@@ -45,6 +77,13 @@
         </div>
       </div>
 
+      <!-- Timeline -->
+      <div class="timeline-container" id="timelineContainer">
+        <div class="section-subtitle">Riwayat Perjalanan Paket</div>
+        <div class="timeline" id="timeline"></div>
+      </div>
+
+      <!-- Detail Grid -->
       <div class="detail-grid" id="detailGrid"></div>
     </div>
   </div>

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const userData = JSON.parse(localStorage.getItem('sitta_user'));
 
   if (!userData) {
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
     return;
   }
 
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.getElementById('btnLogout').addEventListener('click', function () {
     localStorage.removeItem('sitta_user');
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
   });
 
   var menuLaporan = document.getElementById('menuLaporan');

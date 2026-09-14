@@ -5,10 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - SITTA Universitas Terbuka</title>
   <link rel="stylesheet" href="css/style.css">
+  <!-- Contoh Penerapan Internal CSS (Sesuai Kriteria Penilaian CSS Tugas 1 UT: External, Internal, Inline) -->
+  <style>
+    .portal-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 9999px;
+      background: rgba(30, 58, 138, 0.12);
+      color: #1e3a8a;
+      font-weight: 600;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      border: 1px solid rgba(30, 58, 138, 0.2);
+    }
+    body.dark-mode .portal-tag {
+      background: rgba(96, 165, 250, 0.2);
+      color: #93c5fd;
+      border-color: rgba(96, 165, 250, 0.3);
+    }
+  </style>
 </head>
 <body class="dark-mode-ready">
   <header>
-    <h1><span class="logo-icon">📘</span> SITTA - Universitas Terbuka</h1>
+    <h1><span class="logo-icon">📘</span> SITTA - Universitas Terbuka <span class="portal-tag">UT Daerah</span></h1>
     <nav class="user-info">
       <span id="displayNama">-</span>
       <button class="btn-icon" id="btnDarkMode" title="Mode Gelap">🌙</button>

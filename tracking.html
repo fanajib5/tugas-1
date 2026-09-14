@@ -20,66 +20,92 @@
     <a href="dashboard.html" class="back-link">&#8592; Kembali ke Dashboard</a>
 
     <section class="card">
-      <h2 class="card-title">Lacak Pengiriman</h2>
+      <h2 class="card-title">Lacak Pengiriman Bahan Ajar</h2>
       <div class="search-bar">
-        <label for="inputNoDO" style="display:flex;align-items:center;font-weight:500;white-space:nowrap;">No. DO/Billing</label>
-        <input type="text" id="inputNoDO" placeholder="Contoh: DO-001">
-        <button class="btn btn-primary" id="btnCari">Lacak</button>
+        <input type="text" id="inputNoDO" placeholder="Masukkan Nomor DO (Contoh: DO-001, DO-002)...">
+        <button class="btn btn-primary" id="btnCari">🔍 Lacak Pengiriman</button>
       </div>
-      <div id="alertContainer"></div>
+      <div class="quick-chips">
+        <span>Coba Nomor DO:</span>
+        <button type="button" class="chip-btn" data-dono="DO-001">DO-001 (Sampai)</button>
+        <button type="button" class="chip-btn" data-dono="DO-002">DO-002 (Dikirim)</button>
+        <button type="button" class="chip-btn" data-dono="DO-003">DO-003 (Diproses)</button>
+        <button type="button" class="chip-btn" data-dono="DO-004">DO-004 (Sampai)</button>
+      </div>
+      <div id="alertContainer" style="margin-top:1rem;"></div>
     </section>
 
     <section class="card tracking-result" id="trackingResult">
-      <h2 class="card-title" id="resultTitle">Hasil Pencarian</h2>
+      <!-- Waybill Modern Hero Card -->
+      <article class="waybill-card" id="waybillCard">
+        <div class="waybill-topbar">
+          <div class="waybill-dono">
+            <span class="icon">📦</span>
+            <span id="displayNoDO">DO-001</span>
+          </div>
+          <div id="statusBadge"></div>
+        </div>
 
-      <div class="student-info-card" id="studentInfoCard">
-        <div class="student-info-row">
-          <span class="info-label">Nama Mahasiswa</span>
-          <span class="info-value" id="infoNama"></span>
+        <div class="waybill-student">
+          <div style="font-size:0.75rem;opacity:0.85;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;">Mahasiswa Penerima Bahan Ajar</div>
+          <h3 id="infoNama">-</h3>
+          <div class="nik-badge">
+            <span>🆔 NIK:</span> <strong id="infoNik">-</strong>
+            <span style="margin:0 4px;opacity:0.4;">•</span>
+            <span>📅 Tgl Kirim:</span> <span id="infoTgl">-</span>
+          </div>
         </div>
-        <div class="student-info-row">
-          <span class="info-label">Nomor Identitas</span>
-          <span class="info-value" id="infoNik"></span>
+
+        <div class="waybill-route">
+          <div class="route-point">
+            <span class="route-label">Lokasi Asal</span>
+            <span class="route-city" id="locAsal">-</span>
+          </div>
+          <div class="route-connector">
+            <span class="route-vehicle">🚚</span>
+            <div class="route-line"></div>
+          </div>
+          <div class="route-point" style="text-align:right;">
+            <span class="route-label">Tujuan Pengiriman</span>
+            <span class="route-city" id="locTujuan">-</span>
+          </div>
         </div>
-        <div class="student-info-row">
-          <span class="info-label">Tanggal Kirim</span>
-          <span class="info-value" id="infoTgl"></span>
+      </article>
+
+      <!-- Stepper Tracking Stage -->
+      <div class="stepper-box">
+        <div class="stepper-header">
+          <span class="stepper-title">Status Pelacakan Pengiriman</span>
+          <span id="statusSubtext" style="font-size:0.85rem;color:var(--text-muted);font-weight:600;">Tahap 3 dari 3</span>
         </div>
-        <div class="student-info-row">
-          <span class="info-label">Status</span>
-          <span class="info-value" id="infoStatus"></span>
-        </div>
-        <div class="student-info-row">
-          <span class="info-label">Rute Pengiriman</span>
-          <span class="info-value" id="infoRute"></span>
+        <div class="stepper-track">
+          <div class="stepper-progress-bg">
+            <div class="stepper-progress-active" id="progressFill" style="width: 0%;"></div>
+          </div>
+          <div class="step-node" id="step1">
+            <div class="step-circle">1</div>
+            <div class="step-title">Diproses</div>
+          </div>
+          <div class="step-node" id="step2">
+            <div class="step-circle">2</div>
+            <div class="step-title">Dikirim</div>
+          </div>
+          <div class="step-node" id="step3">
+            <div class="step-circle">3</div>
+            <div class="step-title">Sampai</div>
+          </div>
         </div>
       </div>
 
-      <div class="location-arrow" id="locationArrow">
-        <span class="location-from" id="locAsal"></span>
-        <span class="arrow-symbol">&#8594;</span>
-        <span class="location-to" id="locTujuan"></span>
-      </div>
+      <!-- Detail Info Cards -->
+      <div class="detail-grid" id="detailGrid"></div>
 
-      <div class="progress-container">
-        <div id="statusBadge" style="margin-bottom:0.5rem;"></div>
-        <div class="progress-bar">
-          <div class="progress-fill" id="progressFill"></div>
-        </div>
-        <div class="progress-labels">
-          <span id="label1">Diproses</span>
-          <span id="label2">Dikirim</span>
-          <span id="label3">Sampai</span>
-        </div>
-      </div>
-
-      <div class="timeline-container" id="timelineContainer">
-        <div class="section-subtitle">Riwayat Perjalanan Paket</div>
+      <!-- Timeline Card -->
+      <div class="timeline-card">
+        <div class="section-subtitle"><span>📍</span> Riwayat Perjalanan Paket</div>
         <div class="timeline" id="timeline"></div>
       </div>
-
-      <div class="detail-grid" id="detailGrid"></div>
-    </div>
+    </section>
   </main>
 
   <footer class="app-footer">

@@ -78,40 +78,41 @@ graph LR
 ### Segmen 4: Tracking Pengiriman Bahan Ajar (Menit 06:30 – 09:00)
 - **Tindakan**:
   1. Klik menu card **Tracking Pengiriman** (atau buka `tracking.html`).
-  2. Masukkan nomor Delivery Order: `DO-001` lalu tekan Enter atau klik tombol **Lacak**.
-  3. Tunjukkan elemen yang tampil dinamis dari `dataTracking`:
-     - Nama Mahasiswa: `ROIKA HEPRIDA SITIO`
-     - Nomor Identitas / NIK
-     - Tanggal Kirim & Rute Pengiriman (`TANJUNGPANDAN -> PEMATANGSIANTAR`)
-     - Badge Status warna & Progress Bar terisi 100% (status "Sampai")
-     - Riwayat Perjalanan Paket (timeline interaktif)
-     - Rincian Ekspedisi (`JNE`), Jenis Paket (`Paket Lengkap`), Total Pembayaran (`Rp 450.000`).
-  4. Uji coba masukkan nomor DO yang tidak terdaftar (misal `DO-999`) -> Tunjukkan alert penanganan error yang ramah pengguna.
-  5. Klik tautan `← Kembali ke Dashboard`.
+  2. Gunakan fitur **Quick Chips** (klik tombol chip `DO-001 (Sampai)` atau `DO-002 (Dikirim)`) untuk pengujian instan.
+  3. Tunjukkan elemen tampilan **Waybill Card Modern**:
+     - Label No. DO, Status badge menyala, Tanggal Kirim.
+     - Nama Mahasiswa & Identitas NIK tebal.
+     - **Visual Route Tracker**: Asal pengiriman (`TANJUNGPANDAN`) ── 🚚 ──> Tujuan (`PEMATANGSIANTAR`).
+  4. Tunjukkan **Stepper Status 3 Tahap**:
+     - Lingkaran node (1: Diproses, 2: Dikirim, 3: Sampai) dengan active indicator dan teks status dinamis.
+  5. Tunjukkan 4 Kartu Detail Ekspedisi: Mitra Ekspedisi, Tgl Kirim, Jenis Paket, dan Total Biaya Rupiah.
+  6. Tunjukkan **Timeline Riwayat Perjalanan Paket** dengan pulsating glowing radar dot pada titik transit terkini.
+  7. Klik chip / input nomor DO tidak terdaftar (`DO-999`) -> Tunjukkan feedback alert error yang jelas.
+  8. Klik tautan `← Kembali ke Dashboard`.
 - **Poin Penjelasan Tutor**:
-  - Jelaskan pencarian array object dengan JavaScript DOM.
-  - Jelaskan simulasi visual status: progress bar width (33% untuk Diproses, 66% untuk Dikirim, 100% untuk Sampai).
+  - Jelaskan pencarian array object dengan JavaScript DOM murni.
+  - Jelaskan implementasi UI modern Waybill Card & Stepper tanpa library pihak ketiga.
 
 ---
 
-### Segmen 5: Informasi Stok & Manipulasi Data Tabel DOM (Menit 09:00 – 11:30)
+### Segmen 5: Informasi Stok & Dual-View DOM (Menit 09:00 – 11:30)
 - **Tindakan**:
   1. Klik menu **Informasi Bahan Ajar** (buka `stok.html`).
-  2. Tunjukkan tabel data bahan ajar yang ter-render dinamis dari konstanta `dataBahanAjar`.
-  3. Coba fitur pencarian: ketik kode atau nama modul (misal `Komunikasi` atau `MKDU`) -> Tabel langsung menyaring data secara real-time.
-  4. Klik tombol **+ Tambah Baris Stok Baru**.
-  5. Isi data modul baru:
-     - Kode Lokasi: `OTMP06`
-     - Kode Barang: `MSIM4201`
-     - Nama Barang: `Sistem Operasi UT`
-     - Jenis Barang: `BMP`
-     - Edisi: `1`
-     - Stok: `100`
-  6. Klik **Simpan** -> Tunjukkan baris baru langsung tersisipkan ke tabel menggunakan manipulasi DOM (`document.createElement('tr')`, `appendChild()`), dan alert sukses muncul.
-  7. Tunjukkan tombol aksi **Hapus** pada baris tabel -> Ketika diklik dan dikonfirmasi, baris terhapus dari DOM dan array.
+  2. Tunjukkan **3 Kartu Metrik Statistik Real-Time**:
+     - Total Judul Bahan Ajar (10 Modul)
+     - Total Fisik Stok Tersedia (2.323 Eks)
+     - Stok Menipis / Perlu Restok (< 100)
+  3. Tunjukkan **Dual-View Switcher**:
+     - Klik tombol **🗂️ Katalog**: Tampilan beralih ke grid kartu buku artistik bergaya modul BMP UT (sesuai contoh soal PDF hal. 4).
+     - Klik tombol **📋 Tabel**: Tampilan kembali ke tabel dengan status ketersediaan (Aman, Terbatas, Kritis).
+  4. Coba pencarian real-time (ketik `Ekonomi` atau `Komunikasi`) dan filter dropdown jenis modul (BMP / Modul / Praktikum).
+  5. Klik tombol **➕ Tambah Baris Stok Baru**:
+     - Isi form tambah (Kode Lokasi, Kode Modul, Nama Materi, Edisi, Stok).
+     - Klik **Simpan Data** -> Baris baru langsung muncul di Tabel, Katalog, dan angka Metrik otomatis terupdate tanpa refresh!
+  6. Tunjukkan tombol **Hapus** -> Menghapus data dan otomatis memperbarui DOM di kedua mode tampilan.
 - **Poin Penjelasan Tutor**:
-  - Soroti bahwa penambahan baris tabel dilakukan murni lewat manipulasi DOM tanpa me-reload halaman (*Single Page Experience*).
-  - Jelaskan logika validasi input stok sebelum dimasukkan ke array dan tabel.
+  - Tunjukkan bagaimana konsep manipulasi DOM dapat menyajikan data yang sama dalam dua representasi berbeda (Tabel vs Katalog Buku).
+  - Soroti sinkronisasi state data array dengan metrik counter di DOM.
 
 ---
 
